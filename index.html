@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Nova Healthcare</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <section id="landingPage" class="page active-page">
+      <nav class="navbar">
+        <div class="brand">
+          <div class="brand-icon">+</div>
+          <div>
+            <h2>Code Nova Healthcare</h2>
+            <span>AI Patient Queue System</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#model">AI Model</a>
+          <a href="#integrations">Integrations</a>
+        </div>
+        <button class="nav-login" onclick="showRolePage()">Login</button>
+      </nav>
+
+      <main class="hero">
+        <div class="hero-text">
+          <div class="badge">Smart Healthcare Management</div>
+          <h1>Hospital queue ko <span>AI se faster</span> banao.</h1>
+          <p>
+            Patient token, waiting time, appointment approval, AI symptom summary,
+            ABHA/FHIR ready records and Supabase powered analytics in one system.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn" onclick="showRolePage()">Get Started</button>
+            <button class="ghost-btn" onclick="openAuth('patient')">Patient Register</button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="floating-card card-one">
+            <span>✓</span>
+            <div>
+              <strong>Token A-104</strong>
+              <small>Waiting time 18 min</small>
+            </div>
+          </div>
+          <div class="doctor-illustration">
+            <div class="circle-bg"></div>
+            <div class="medical-symbol">+</div>
+            <div class="doctor-box">AI</div>
+          </div>
+          <div class="floating-card card-two">
+            <div class="mini-chart"><div></div><div></div><div></div><div></div><div></div></div>
+            <div>
+              <strong>Patient Analytics</strong>
+              <small>Live admin dashboard</small>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <section class="features" id="features">
+        <article class="feature-card">
+          <div class="feature-icon">P</div>
+          <h3>Patient Portal</h3>
+          <p>Mobile/ABHA login, token generation, report upload, profile and permission controls.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">D</div>
+          <h3>Doctor Dashboard</h3>
+          <p>Approve appointments, view patient records and receive AI talking summaries.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">A</div>
+          <h3>Super Admin</h3>
+          <p>Register doctors and monitor real-time patient analytics for hospital operations.</p>
+        </article>
+      </section>
+
+      <section class="info-band" id="model">
+        <div>
+          <h2>AI Assistant Model</h2>
+          <p>Assistant patient se basic questions poochta hai, symptom summary banata hai aur doctor dashboard par forward karta hai.</p>
+        </div>
+        <div class="info-grid">
+          <span>Voice Input</span><span>Summary Report</span><span>Doctor Forward</span><span>FHIR Export</span>
+        </div>
+      </section>
+
+      <section class="info-band white" id="integrations">
+        <div>
+          <h2>FHIR + Supabase</h2>
+        
+        </div>
+      </section>
+
+      <footer class="footer">Created by Code Nova</footer>
+    </section>
+
+    <section id="rolePage" class="page">
+      <button class="back-btn" onclick="showLanding()">Back</button>
+      <div class="role-container">
+        <div class="role-heading">
+          <div class="small-logo">+</div>
+          <h1>Select Dashboard Role</h1>
+          <p>Login role ke hisaab se dashboard open hoga.</p>
+        </div>
+        <div class="role-cards">
+          <div class="role-card" onclick="openAuth('patient')">
+            <div class="role-icon patient-icon">P</div>
+            <h2>Patient</h2>
+            <p>Mobile/ABHA login, appointment booking, token and reports.</p>
+            <button>Continue as Patient</button>
+          </div>
+          <div class="role-card" onclick="openAuth('doctor')">
+            <div class="role-icon doctor-icon">D</div>
+            <h2>Doctor</h2>
+            <p>Email/password login, approve requests and view AI summaries.</p>
+            <button>Doctor Login</button>
+          </div>
+          <div class="role-card" onclick="openAuth('admin')">
+            <div class="role-icon admin-icon">SA</div>
+            <h2>Super Admin</h2>
+            <p>Register doctors, view analytics and manage hospital queue.</p>
+            <button>Admin Login</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="authPage" class="page">
+      <button class="back-btn" onclick="showRolePage()">Change Role</button>
+      <div class="auth-container">
+        <div class="auth-info">
+          <div class="auth-logo">+</div>
+          <h1 id="authWelcome">Welcome Patient</h1>
+          <p id="authDescription">Login or create your patient account to continue.</p>
+          <div class="auth-points">
+            <div>✓ Secure profile management</div>
+            <div>✓ Queue and token tracking</div>
+            <div>✓ AI summary for doctor</div>
+          </div>
+        </div>
+        <div class="auth-box">
+          <div class="tabs">
+            <button id="loginTab" class="tab active-tab" onclick="showLogin()">Login</button>
+            <button id="signupTab" class="tab" onclick="showSignup()">Sign Up</button>
+          </div>
+          <form id="loginForm" onsubmit="loginUser(event)">
+            <h2>Login to your account</h2>
+            <p class="form-subtitle">Demo credentials niche diye gaye hain.</p>
+            <label id="loginIdLabel">Mobile Number / ABHA Number</label>
+            <input type="text" id="loginId" placeholder="Enter mobile number or ABHA number" required />
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required />
+            <div class="demo-box" id="demoCredentials">Patient: 9876543210 / patient123</div>
+            <button class="submit-btn">Login</button>
+          </form>
+          <form id="signupForm" class="hidden" onsubmit="signupUser(event)">
+            <h2>Create patient account</h2>
+            <p class="form-subtitle">Public registration sirf patient ke liye hai.</p>
+            <div class="two-inputs">
+              <div><label>Full Name</label><input type="text" id="signupName" placeholder="Your full name" required /></div>
+              <div><label>Age</label><input type="number" id="signupAge" placeholder="Age" min="1" max="120" required /></div>
+            </div>
+            <label>Mobile Number</label>
+            <input type="tel" id="signupMobile" placeholder="10 digit mobile number" maxlength="10" required />
+            <div id="patientFields">
+              <label>ABHA Number</label>
+              <input type="text" id="abhaId" placeholder="14 digit ABHA number" />
+              <label>Blood Group</label>
+              <select id="bloodGroup"><option>B+</option><option>O+</option><option>A+</option><option>AB+</option></select>
+            </div>
+            <div id="doctorFields" class="hidden"></div>
+            <div id="adminFields" class="hidden"></div>
+            <label>Password</label>
+            <input type="password" id="signupPassword" placeholder="Create password" required />
+            <button class="submit-btn">Create Account</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="patientDashboard" class="dashboard-page hidden-page"></section>
+    <section id="doctorDashboard" class="dashboard-page hidden-page"></section>
+    <section id="adminDashboard" class="dashboard-page hidden-page"></section>
+
+    <div id="toast" class="toast"><span>✓</span><p>Success!</p></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
